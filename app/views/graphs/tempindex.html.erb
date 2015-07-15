@@ -1,0 +1,543 @@
+
+    <nav role="navigation" class="navbar navbar-inverse">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="#" class="navbar-brand">CSI Dashboard</a>
+        </div>
+        <!-- Collection of nav links, forms, and other content for toggling -->
+        <div id="navbarCollapse" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#">Profile</a></li>
+                <li class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">Danube <b class="caret"></b></a>
+                    <ul role="menu" class="dropdown-menu">
+                        <li><%= link_to "Danube1 (5.4.1)", graphs_index_path %></li>
+                        <li><a href="#">Danube2 (5.4.2)</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Danube3 (5.4.3)</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+
+<script type="text/javascript">
+$(function () {
+    var seriesOptions = [],
+        seriesCounter = 0,
+        names = ['TEST1', 'TEST2'],
+        // create the chart when all data is loaded
+        createChart = function () {
+
+            $('#container90').highcharts('StockChart', {
+
+                legend: {
+                    enabled: true,
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'middle',
+                    borderWidth: 0
+                },
+                
+                rangeSelector: {
+                    selected: 4
+                },
+
+                yAxis: {
+                    labels: {
+                        formatter: function () {
+                            return (this.value > 0 ? ' + ' : '') + this.value ;
+                        }
+                    },
+                    plotLines: [{
+                        value: 0,
+                        width: 2,
+                        color: 'silver'
+                    }]
+                },
+
+                tooltip: {
+                    pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.change}%)<br/>',
+                    valueDecimals: 2
+                },
+
+                series: seriesOptions
+            });
+        };
+
+    $.each(names, function (i, name) {
+
+        $.ajax({
+          url: 'http://10.250.124.142/' + name.toLowerCase() + '.json',
+          dataType: "jsonp",
+          jsonpCallback: name.toLowerCase() + '321', /* Unique function name */
+          success: function(data){
+
+            seriesOptions[i] = {
+                name: name,
+                data: data
+            };
+
+            // As we're loading the data asynchronously, we don't know what order it will arrive. So
+            // we keep a counter and create the chart when all the data is loaded.
+            seriesCounter += 1;
+
+            if (seriesCounter === names.length) {
+                createChart();
+            }
+          }
+        });
+
+    });
+
+
+});
+</script>
+<div id="container90" style="height: 400px; min-width: 310px"></div>
+<div id="container90" style="height: 400px; min-width: 310px"></div>
+
+
+
+
+
+
+
+
+
+
+<% if false %>
+
+<h1>Graphs#index</h1>
+<p>Find me in app/views/graphs/index.html.erb</p>
+
+<% if false %>
+
+<script type="text/javascript">
+$(function () {
+    var seriesOptions = [],
+        seriesCounter = 0,
+        names = ['MSFT', 'AAPL', 'GOOG'],
+        // create the chart when all data is loaded
+        createChart = function () {
+
+            $('#container90').highcharts('StockChart', {
+
+                rangeSelector: {
+                    selected: 4
+                },
+
+                yAxis: {
+                    labels: {
+                        formatter: function () {
+                            return (this.value > 0 ? ' + ' : '') + this.value ;
+                        }
+                    },
+                    plotLines: [{
+                        value: 0,
+                        width: 2,
+                        color: 'silver'
+                    }]
+                },
+
+                tooltip: {
+                    pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.change}%)<br/>',
+                    valueDecimals: 2
+                },
+
+                series: seriesOptions
+            });
+        };
+
+    $.each(names, function (i, name) {
+
+        $.getJSON('http://www.highcharts.com/samples/data/jsonp.php?filename=' + name.toLowerCase() + '-c.json&callback=?',    function (data) {
+
+            seriesOptions[i] = {
+                name: name,
+                data: data
+            };
+
+            // As we're loading the data asynchronously, we don't know what order it will arrive. So
+            // we keep a counter and create the chart when all the data is loaded.
+            seriesCounter += 1;
+
+            if (seriesCounter === names.length) {
+                createChart();
+            }
+        });
+    });
+});
+</script>
+<div id="container90" style="height: 400px; min-width: 310px"></div>
+
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+<% if false %>
+
+<script type="text/javascript">
+$(function () {
+    var seriesOptions = [
+{name: 'a', data: [
+                    {
+                        x: 1147651200000, 
+                        y: 10, 
+                        config1: 'test',     // our custom data
+                        config2: 'test2'     // our custom data
+                    }, 
+                    {
+                        x:1147737600000, 
+                        y:20, 
+                        config1: 'test3',    // our custom data
+                        config2: 'test4'     // our custom data
+                    }
+                  ]},
+{name: 'b', data: [
+                    {
+                        x: 1147651200000, 
+                        y: 15, 
+                        config1: 'test',     // our custom data
+                        config2: 'test2'     // our custom data
+                    }, 
+                    {
+                        x:1147737600000, 
+                        y:20, 
+                        config1: 'test3',    // our custom data
+                        config2: 'test4'     // our custom data
+                    }
+
+ ]},
+{name: 'c', data: [                    {
+                        x: 1147651200000, 
+                        y: 10, 
+                        config1: 'test',     // our custom data
+                        config2: 'test2'     // our custom data
+                    }, 
+                    {
+                        x:1147737600000, 
+                        y:25, 
+                        config1: 'test3',    // our custom data
+                        config2: 'test4'     // our custom data
+                    } 
+                    ]}
+    ],
+        seriesCounter = 0,
+        names = ['a', 'b', 'c'],
+        // create the chart when all data is loaded
+        createChart = function () {
+
+            $('#container').highcharts('StockChart', {
+        chart: {
+            type: 'line',
+            width: 1200
+        },
+        title: {
+            text: 'Width is set to 300px'
+        },
+
+                rangeSelector: {
+                    selected: 4
+                },
+
+                yAxis: {
+                    labels: {
+                        formatter: function () {
+                            return (this.value > 0 ? ' + ' : '') + this.value ;
+                        }
+                    },
+                    plotLines: [{
+                        value: 0,
+                        width: 2,
+                        color: 'silver'
+                    }]
+                },
+
+        tooltip: {
+            formatter: function () {
+                var s = '<b>' + Highcharts.dateFormat('%A, %b %e, %Y', this.x) + '</b>';
+
+                $.each(this.points, function () {
+                    s += '<br/>1 USD = ' + this.y + ' EUR' + ' ' + this.point.config1 + ' ' + this.point.config2 + ' ' +  this.point.plotX;
+                });
+
+                return s;
+            }
+        },
+
+
+
+                series: seriesOptions
+            });
+        };
+        
+        createChart();
+});
+
+</script>
+
+
+<div id="container" style="height: 400px"></div>
+
+
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<% if false %>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+    
+        var dataObject = {
+            rangeSelector: {
+                selected: 1,
+                inputEnabled: $('#container1').width() > 480
+            },
+            
+            title: {
+                text: 'Klocworks Issues'
+            },
+            
+            series: [{
+                name: 'Week',
+                data: <%= @dat %>,
+                tooltip: {
+                    valueDecimals: 2
+                }
+            }]
+            
+            ,
+            
+            chart: {
+
+                renderTo: 'container1'
+            }
+            
+        };
+        
+        
+        var chart = $('#container1').highcharts('StockChart', dataObject);
+    
+    });
+
+
+</script>
+
+
+<div id="container1" style="height: 400px"></div>
+
+<% end %>
+
+
+<% if false %>
+
+<script type="text/javascript">
+
+$(function () {
+
+    $.getJSON('http://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?', function (data) {
+        // Create the chart
+        
+        
+        $('#container').highcharts('StockChart', {
+
+
+            rangeSelector : {
+                selected : 1
+            },
+
+            title : {
+                text : 'AAPL Stock Price'
+            },
+
+            series : [{
+                name : 'AAPL',
+                data : data,
+                tooltip: {
+                    valueDecimals: 2
+                }
+            }]
+        });
+
+
+    });
+
+});
+
+</script>
+
+
+<div id="container" style="height: 400px"></div>
+
+<% end %>
+
+
+
+<% if false %>
+
+<script type="text/javascript">
+
+$.ajax({
+  url: "http://10.250.124.142/test.json",
+  dataType: "jsonp",
+  jsonpCallback: "testing321", /* Unique function name */
+  success: function(data){
+    /* Do something with data */
+    /*alert(data.message) /* Will alert Hello, world! */ 
+    $('#containerA').highcharts('StockChart', {
+
+        legend: {
+            enabled: true,
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+
+            rangeSelector : {
+                selected : 1
+            },
+
+            title : {
+                text : 'AAPL Stock Price'
+            },
+
+            series : [{
+                name : 'AAPL',
+                data : data,
+                tooltip: {
+                    valueDecimals: 2
+                }
+            }]
+
+    
+
+
+        });
+
+  }
+});
+
+</script>
+
+<div id="containerA" style="min-width: 800px; height: 400px; margin: 0 "></div>
+
+<% end %>
+
+
+
+<script type="text/javascript">
+$(function () {
+    var seriesOptions = [],
+        seriesCounter = 0,
+        names = ['TEST1', 'TEST2'],
+        // create the chart when all data is loaded
+        createChart = function () {
+
+            $('#container90').highcharts('StockChart', {
+
+                legend: {
+                    enabled: true,
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'middle',
+                    borderWidth: 0
+                },
+                
+                rangeSelector: {
+                    selected: 4
+                },
+
+                yAxis: {
+                    labels: {
+                        formatter: function () {
+                            return (this.value > 0 ? ' + ' : '') + this.value ;
+                        }
+                    },
+                    plotLines: [{
+                        value: 0,
+                        width: 2,
+                        color: 'silver'
+                    }]
+                },
+
+                tooltip: {
+                    pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.change}%)<br/>',
+                    valueDecimals: 2
+                },
+
+                series: seriesOptions
+            });
+        };
+
+    $.each(names, function (i, name) {
+
+        $.ajax({
+          url: 'http://10.250.124.142/' + name.toLowerCase() + '.json',
+          dataType: "jsonp",
+          jsonpCallback: name.toLowerCase() + '321', /* Unique function name */
+          success: function(data){
+
+            seriesOptions[i] = {
+                name: name,
+                data: data
+            };
+
+            // As we're loading the data asynchronously, we don't know what order it will arrive. So
+            // we keep a counter and create the chart when all the data is loaded.
+            seriesCounter += 1;
+
+            if (seriesCounter === names.length) {
+                createChart();
+            }
+          }
+        });
+
+    });
+
+
+});
+</script>
+<div id="container90" style="height: 400px; min-width: 310px"></div>
+
+
+<% end %>
+
+
+

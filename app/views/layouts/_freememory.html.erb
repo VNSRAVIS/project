@@ -1,0 +1,375 @@
+
+<script type="text/javascript">
+$(function () {
+    var seriesOptions = [],
+        seriesCounter = 0,
+        names = <%=raw @arra2 %>,
+        // create the chart when all data is loaded
+        createChart = function () {
+
+            $('#container2').highcharts('StockChart', {
+
+                title: {
+                  text: ''
+
+                },
+
+                subtitle: {
+                    text: 'SRTP Call / Conference'
+                },
+
+                chart: {
+                        // Edit chart spacing
+                        spacingBottom: 10,
+                        spacingTop: 10,
+                        spacingLeft: 10,
+                        spacingRight: 10,
+
+                        // Explicitly tell the width and height of a chart
+                        width: 1200,
+                        height: null,
+                        borderWidth: 0,
+                },
+
+                legend: {
+                    enabled: true,
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'middle',
+                    borderWidth: 0
+                },
+                
+                rangeSelector: {
+                    selected: 4
+                },
+
+                yAxis: {
+                    labels: {
+                        formatter: function () {
+                            return (this.value > 0 ? ' + ' : '') + this.value ;
+                        }
+                    },
+                    plotLines: [{
+                        value: 0,
+                        width: 2,
+                        color: 'silver'
+                    }]
+                },
+
+                tooltip: {
+                    pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.change}%)<br/>',
+                    valueDecimals: 2
+                },
+
+                series: seriesOptions
+            });
+        };
+
+    $.each(names, function (i, name) {
+
+        $.ajax({
+          url: 'http://10.250.124.142/' + name.toLowerCase() + '.json',
+          dataType: "jsonp",
+          jsonpCallback: name.toLowerCase() + '321', /* Unique function name */
+          success: function(data){
+
+            seriesOptions[i] = {
+                name: name,
+                data: data
+            };
+
+            // As we're loading the data asynchronously, we don't know what order it will arrive. So
+            // we keep a counter and create the chart when all the data is loaded.
+            seriesCounter += 1;
+
+            if (seriesCounter === names.length) {
+                createChart();
+            }
+          }
+        });
+
+    });
+});
+</script>
+
+
+        <div class="">
+            <div class="col-lg-11">
+                    
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
+        </div>
+
+
+
+
+
+
+<script type="text/javascript">
+$(function () {
+    var seriesOptions = [],
+        seriesCounter = 0,
+        names = <%=raw @arra1 %>,
+        // create the chart when all data is loaded
+        createChart = function () {
+
+            $('#container1').highcharts('StockChart', {
+
+                title: {
+                  text: ''
+
+                },
+
+                subtitle: {
+                    text: 'SRTP Call / Conference'
+                },
+
+                chart: {
+                        // Edit chart spacing
+                        spacingBottom: 10,
+                        spacingTop: 10,
+                        spacingLeft: 10,
+                        spacingRight: 10,
+
+                        // Explicitly tell the width and height of a chart
+                        width: null,
+                        height: null,
+                        borderWidth: 0,
+                },
+
+                legend: {
+                    enabled: true,
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'middle',
+                    borderWidth: 0
+                },
+                
+                rangeSelector: {
+                    selected: 4
+                },
+
+                yAxis: {
+                    labels: {
+                        formatter: function () {
+                            return (this.value > 0 ? ' + ' : '') + this.value ;
+                        }
+                    },
+                    plotLines: [{
+                        value: 0,
+                        width: 2,
+                        color: 'silver'
+                    }]
+                },
+
+                tooltip: {
+                    pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.change}%)<br/>',
+                    valueDecimals: 2
+                },
+
+                series: seriesOptions
+            });
+        };
+
+    $.each(names, function (i, name) {
+
+        $.ajax({
+          url: 'http://10.250.124.142/' + name.toLowerCase() + '.json',
+          dataType: "jsonp",
+          jsonpCallback: name.toLowerCase() + '321', /* Unique function name */
+          success: function(data){
+
+            seriesOptions[i] = {
+                name: name,
+                data: data
+            };
+
+            // As we're loading the data asynchronously, we don't know what order it will arrive. So
+            // we keep a counter and create the chart when all the data is loaded.
+            seriesCounter += 1;
+
+            if (seriesCounter === names.length) {
+                createChart();
+            }
+          }
+        });
+
+    });
+});
+</script>
+
+
+        <div class="">
+            <div class="col-lg-11">
+                    <div class="panel panel-danger">
+                        <div class="panel-heading">
+                            CPU Usage
+                        </div>
+                        <!-- /.panel-heading -->
+                    <div class="panel-body">
+                            
+                            <div class="centered" id="container1" style="height: 400px; width: 1400px; text-align:center"></div>
+
+                        </div>
+                  <!--  </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+           </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+<% if false %>
+<script type="text/javascript">
+$(function () {
+    var seriesOptions = [],
+        seriesCounter = 0,
+        names = <%=raw @arra1 %>,
+        // create the chart when all data is loaded
+        createChart = function () {
+
+            $('#container1').highcharts('StockChart', {
+
+                title: {
+                  text: 'Phone Idle State'
+                },
+
+                subtitle: {
+                    text: ''
+                },
+
+                chart: {
+                        // Edit chart spacing
+                        spacingBottom: 10,
+                        spacingTop: 10,
+                        spacingLeft: 10,
+                        spacingRight: 10,
+                        // Explicitly tell the width and height of a chart
+                        width: null,
+                        height: null,
+                        borderWidth: 0,
+
+                },
+
+                legend: {
+                    enabled: true,
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'middle',
+                    borderWidth: 0
+                },
+                
+                rangeSelector: {
+                    selected: 4
+                },
+
+                yAxis: {
+                    labels: {
+                        formatter: function () {
+                            return (this.value > 0 ? ' + ' : '') + this.value ;
+                        }
+                    },
+                    plotLines: [{
+                        value: 0,
+                        width: 2,
+                        color: 'silver'
+                    }]
+                },
+
+                tooltip: {
+                    pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.change}%)<br/>',
+                    valueDecimals: 2
+                },
+
+                series: seriesOptions
+            });
+        };
+
+    $.each(names, function (i, name) {
+
+        $.ajax({
+          url: 'http://10.250.124.142/' + name.toLowerCase() + '.json',
+          dataType: "jsonp",
+          jsonpCallback: name.toLowerCase() + '321', /* Unique function name */
+          success: function(data){
+
+            seriesOptions[i] = {
+                name: name,
+                data: data
+            };
+
+            // As we're loading the data asynchronously, we don't know what order it will arrive. So
+            // we keep a counter and create the chart when all the data is loaded.
+            seriesCounter += 1;
+
+            if (seriesCounter === names.length) {
+                createChart();
+            }
+          }
+        });
+
+    });
+
+
+});
+</script>
+
+        <div class="row">
+            <div class="col-lg-11">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            Free Memory Usage
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            
+                            <div class="centered" id="container1" style="height: 400px; width: 1400px; text-align:center"></div>
+
+                        </div>
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
+        </div>
+
+<% end %>
+
+
+
+
+
