@@ -1,4 +1,4 @@
-<nav role="navigation" class="navbar navbar-inverse">
+<nav role="navigation" class="navbar navbar-inverse navbar-fixed-top">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
         <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
@@ -7,13 +7,15 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a href="#" class="navbar-brand">CSI Dashboard</a>
+        <a href="#" class="navbar-brand"><font color="#fff">CSI Dashboard</font></a>
     </div>
     <!-- Collection of nav links, forms, and other content for toggling -->
     <div id="navbarCollapse" class="collapse navbar-collapse ">
         <ul class="nav navbar-nav">
-            <li class="active"><a href="/graphs/index">Home</a></li>
+            <li><a href="/graphs/index"><font color="#fff">Home</font></a></li>
             <li><a href="#">Testing</a></li>
+            
+<% if false %>
             <li class="dropdown">
                 <a data-toggle="dropdown" class="dropdown-toggle" href="#">Danube <b class="caret"></b></a>
                 <ul role="menu" class="dropdown-menu">
@@ -26,9 +28,11 @@
                     <li><a href="#">Danube3 (5.4.3)</a></li>
                 </ul>
             </li>
+<% end %>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Login</a></li>
+            <li><a href="#"><font color="#fff">Login</font></a></li>
+            <li> <a href="#menu-toggle" class="btn-link" id="menu-toggle">Toggle Side Menu</a> </li>
         </ul>
     </div>
 </nav>
@@ -39,8 +43,9 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <a href="#">
+                    <a href="#"><font color="#fff">
                         Software Releases
+                    </font>
                     </a>
                 </li>
                 <li>
@@ -51,9 +56,7 @@
                     </ul>
                 </li>
 
-                <li>
-                     <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
-                </li>
+
             </ul>
 
         </div>
@@ -64,26 +67,43 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="panel panel-primary">
+                        <div class="panel panel-default">
                         <div class="panel-heading">
                             CPU Usage
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             
-                            <div class="centered" id="container2" style="height: 400px; width: 1400px; text-align:center"></div>
+                            <div class="centered" id="container2" style="height: 400px; width: 1200px; text-align:center"></div>
 
                         </div>
-                    </div>
+
+                     </div>
                        <!-- <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a> -->
                     </div>
                 </div>
             </div>
         </div>
         <!-- /#page-content-wrapper -->
-
-    </div>
-    <!-- /#wrapper -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                    <div class="panel panel-danger">
+                        <div class="panel-heading">
+                            Free Memory Usage
+                        </div>
+                        <!-- /.panel-heading -->
+                    <div class="panel-body">
+                    <div class="centered" id="container1" style="height: 400px; width: 1200px; text-align:center"></div>
+                </div>
+                <!--  </div>
+                <!-- /.panel-body -->
+            </div>
+                <!-- /.panel -->
+        </div>
+</div>
+<!-- /#wrapper -->
 
 
    <!-- Menu Toggle Script -->
