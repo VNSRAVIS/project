@@ -1,26 +1,18 @@
 
 <script type="text/javascript">
 $(function () {
-
     var seriesOptions = [
                         {
                             "name": "Total",
-                            "data": <%= raw @total %>
-                        },
-                        {
-                            "name": "Critical",
-                            "data": <%= raw @critical %>
-                        },
-                        {
-                            "name": "Errors",
-                            "data": <%= raw @error %>
-                        },
-                        {
-                            "name": "Warning",
-                            "data": <%= raw @warning %>
+                            "data": [{x:1420777774000, y:100, z:12},
+                                   {x:1421382000000, y:200, z:13},
+                                   {x:1421382574000, y:300, z:14},
+                                   {x:1421987374000, y:300, z:15}]
                         },
                         ],
 
+    
+    
         // create the chart when all data is loaded
         createChart = function () {
 
@@ -28,6 +20,7 @@ $(function () {
 
                 title: {
                   text: ''
+
                 },
 
                 subtitle: {
@@ -73,18 +66,17 @@ $(function () {
                 },
 
                 tooltip: {
-                    formatter: function () {
-                        var s = '<b>' + Highcharts.dateFormat('%A, %b %e, %Y', this.x) + '</b>';
-
-                        $.each(this.points, function () {
-                            s += '<br/>' + this.series.name + ':' + this.point.y + 'SVN:' + this.point.svnversion;
-                        });
-                        return s;
-                    },
+                    pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> this.point.z<br/>',
+                    valueDecimals: 1
                 },
+                            formatter: function () {
+                                var s = '<b>' + Highcharts.dateFormat('%A, %b %e, %Y', this.x) + '</b>';
+
+                                $.each(this.points, function () {
+                                s += '<br/>1 USD = ' + this.y + ' EUR' + ' ' + this.point.config1 + ' ' + this.point.config2 + ' ' +  this.point.plotX;
+                                });
 
                 series: seriesOptions
-
             });
         };
     createChart();
