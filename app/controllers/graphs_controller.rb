@@ -76,28 +76,27 @@ end
     puts @total    
 =end
 
-staticIssues = StaticAnalysis.all
-@totalIssuesOutput = staticIssues.map do | row |
-    { :x => row.time, :y => row.total, :svnversion => row.svnversion }
-end
+    staticIssues = StaticAnalysis.all
+    @totalIssuesOutput = staticIssues.map do | row |
+        { :x => row.time, :y => row.total, :svnversion => row.svnversion }
+    end
 
-@criticalIssuesOutput = staticIssues.map do | row |
-    { :x => row.time, :y => row.critical, :svnversion => row.svnversion }
-end
+    @criticalIssuesOutput = staticIssues.map do | row |
+        { :x => row.time, :y => row.critical, :svnversion => row.svnversion }
+    end
 
-@errorIssuesOutput = staticIssues.map do | row |
-    { :x => row.time, :y => row.error, :svnversion => row.svnversion }
-end
+    @errorIssuesOutput = staticIssues.map do | row |
+        { :x => row.time, :y => row.error, :svnversion => row.svnversion }
+    end
 
-@warningIssuesOutput = staticIssues.map do | row |
-    { :x => row.time, :y => row.warning, :svnversion => row.svnversion }
-end
+    @warningIssuesOutput = staticIssues.map do | row |
+        { :x => row.time, :y => row.warning, :svnversion => row.svnversion }
+    end
 
-@error    = @errorIssuesOutput.to_json
-@total    = @totalIssuesOutput.to_json
-@warning  = @warningIssuesOutput.to_json
-@critical = @criticalIssuesOutput.to_json
-
+    @error    = @errorIssuesOutput.to_json
+    @total    = @totalIssuesOutput.to_json
+    @warning  = @warningIssuesOutput.to_json
+    @critical = @criticalIssuesOutput.to_json
 
   end
 

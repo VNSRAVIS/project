@@ -1,0 +1,37 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  time: 
+  build: MyString
+  vvx300: MyString
+  vvx310: MyString
+  vvx400: MyString
+  vvx410: MyString
+  vvx500: MyString
+  vvx600: MyString
+  vvx1500: MyString
+  tinman: MyString
+  vvx301: MyString
+  vvx401: MyString
+  vvx501: MyString
+  vvx601: MyString
+  freememory: 1
+  identifier: MyString
+
+two:
+  time: 
+  build: MyString
+  vvx300: MyString
+  vvx310: MyString
+  vvx400: MyString
+  vvx410: MyString
+  vvx500: MyString
+  vvx600: MyString
+  vvx1500: MyString
+  tinman: MyString
+  vvx301: MyString
+  vvx401: MyString
+  vvx501: MyString
+  vvx601: MyString
+  freememory: 1
+  identifier: MyString
