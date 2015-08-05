@@ -1,0 +1,7 @@
+Validation Failed: - Build has already been taken
+Validation Failed: - #<Memory id: nil, time: 1435217382, build: "5.4.1.02371", platform: "VVX6001", memory: 168056, identifier: "541", created_at: nil, updated_at: nil>
+Success - #<Memory id: 207, time: 1435217382, build: "5.4.1.02371", platform: "VVX6001", memory: 168056, identifier: "541", created_at: "2015-08-04 08:15:44", updated_at: "2015-08-04 08:15:44">
+Validation Failed: - Build has already been taken
+Validation Failed: - #<Memory id: nil, time: 1435217382, build: "5.4.1.02371", platform: "VVX6001", memory: 168056, identifier: "541", created_at: nil, updated_at: nil>
+Validation Failed: - Build has already been taken
+Validation Failed: - #<Memory id: nil, time: 1435217382, build: "5.4.1.02371", platform: "VVX6001", memory: 168056, identifier: "541", created_at: nil, updated_at: nil>

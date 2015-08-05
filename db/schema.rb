@@ -11,47 +11,81 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150723093545) do
+ActiveRecord::Schema.define(version: 20150729111116) do
 
   create_table "freememories", force: :cascade do |t|
-    t.integer  "time"
-    t.string   "build"
-    t.string   "vvx300"
-    t.string   "vvx310"
-    t.string   "vvx400"
-    t.string   "vvx410"
-    t.string   "vvx500"
-    t.string   "vvx600"
-    t.string   "vvx1500"
-    t.string   "tinman"
-    t.string   "vvx301"
-    t.string   "vvx401"
-    t.string   "vvx501"
-    t.string   "vvx601"
-    t.integer  "freememory"
-    t.string   "identifier"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "time",       limit: 4
+    t.string   "build",      limit: 255
+    t.string   "vvx300",     limit: 255
+    t.string   "vvx310",     limit: 255
+    t.string   "vvx400",     limit: 255
+    t.string   "vvx410",     limit: 255
+    t.string   "vvx500",     limit: 255
+    t.string   "vvx600",     limit: 255
+    t.string   "vvx1500",    limit: 255
+    t.string   "tinman",     limit: 255
+    t.string   "vvx301",     limit: 255
+    t.string   "vvx401",     limit: 255
+    t.string   "vvx501",     limit: 255
+    t.string   "vvx601",     limit: 255
+    t.integer  "freememory", limit: 4
+    t.string   "identifier", limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "memories", force: :cascade do |t|
-    t.integer  "time"
-    t.string   "build"
-    t.string   "platform"
-    t.string   "identifier"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "time",       limit: 8
+    t.string   "build",      limit: 255
+    t.string   "platform",   limit: 255
+    t.integer  "memory",     limit: 8
+    t.string   "identifier", limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "reboottimes", force: :cascade do |t|
+    t.integer  "time",       limit: 8
+    t.string   "build",      limit: 255
+    t.string   "platform",   limit: 255
+    t.integer  "reboot",     limit: 4
+    t.string   "identifier", limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "srtpcalls", force: :cascade do |t|
+    t.integer  "time",       limit: 8
+    t.string   "build",      limit: 255
+    t.string   "platform",   limit: 255
+    t.integer  "srtpcall",   limit: 4
+    t.string   "identifier", limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "srtpconfs", force: :cascade do |t|
+    t.integer  "time",       limit: 8
+    t.string   "build",      limit: 255
+    t.string   "platform",   limit: 255
+    t.integer  "srtpconf",   limit: 4
+    t.string   "identifier", limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "static_analyses", force: :cascade do |t|
-    t.integer  "svnversion"
-    t.integer  "time"
-    t.integer  "total"
-    t.integer  "critical"
-    t.integer  "error"
-    t.integer  "warning"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "svnversion", limit: 4
+    t.integer  "time",       limit: 8
+    t.integer  "total",      limit: 4
+    t.integer  "critical",   limit: 4
+    t.integer  "error",      limit: 4
+    t.integer  "warning",    limit: 4
+    t.string   "build",      limit: 255
+    t.string   "identifier", limit: 255
+    t.string   "platform",   limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
 end

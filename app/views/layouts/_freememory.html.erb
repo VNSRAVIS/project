@@ -42,7 +42,7 @@ $(function () {
                         spacingRight: 10,
 
                         // Explicitly tell the width and height of a chart
-                        width: 1200,
+                        width: null,
                         height: null,
                         borderWidth: 0,
                 },
@@ -77,7 +77,7 @@ $(function () {
                         var s = '<b>' + Highcharts.dateFormat('%A, %b %e, %Y', this.x) + '</b>';
 
                         $.each(this.points, function () {
-                            s += '<br/>' + this.series.name + ':' + this.point.y + 'SVN:' + this.point.svnversion;
+                            s += '<br/>' + this.series.name + ':' + this.point.y + ' (Build:' + this.point.build + ')';
                         });
                         return s;
                     },
@@ -93,6 +93,533 @@ $(function () {
 
 
 
+<script type="text/javascript">
+$(function () {
+
+    var seriesOptions = [
+                        {
+                            "name": "Tinman",
+                            "data": <%= raw @ssinterface %>
+                        },
+                        {
+                            "name": "VVX101",
+                            "data": <%= raw @vvx101 %>
+                        },
+                        {
+                            "name": "VVX201",
+                            "data": <%= raw @vvx201 %>
+                        },
+                        {
+                            "name": "VVX301",
+                            "data": <%= raw @vvx301 %>
+                        },
+                        {
+                            "name": "VVX310",
+                            "data": <%= raw @vvx310 %>
+                        },
+                        {
+                            "name": "VVX410",
+                            "data": <%= raw @vvx410 %>
+                        },
+                        {
+                            "name": "VVX411",
+                            "data": <%= raw @vvx411 %>
+                        },
+                        {
+                            "name": "VVX500",
+                            "data": <%= raw @vvx500 %>
+                        },
+                        {
+                            "name": "VVX501",
+                            "data": <%= raw @vvx501 %>
+                        },
+                        {
+                            "name": "VVX600",
+                            "data": <%= raw @vvx600 %>
+                        },
+                        {
+                            "name": "VVX601",
+                            "data": <%= raw @vvx601 %>
+                        },
+                        {
+                            "name": "VVX1500",
+                            "data": <%= raw @vvx1500 %>
+                        },
+                        ],
+
+        // create the chart when all data is loaded
+        createChart = function () {
+
+            $('#container9').highcharts('StockChart', {
+
+                title: {
+                  text: ''
+                },
+
+                subtitle: {
+                    text: ''
+                },
+
+                chart: {
+                        // Edit chart spacing
+                        spacingBottom: 10,
+                        spacingTop: 10,
+                        spacingLeft: 10,
+                        spacingRight: 10,
+
+                        // Explicitly tell the width and height of a chart
+                        width: null,
+                        height: null,
+                        borderWidth: 0,
+                },
+
+                legend: {
+                    enabled: true,
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'middle',
+                    borderWidth: 0
+                },
+                
+                rangeSelector: {
+                    selected: 4
+                },
+
+                yAxis: {
+                    labels: {
+                        formatter: function () {
+                            return (this.value > 0 ? ' + ' : '') + this.value ;
+                        }
+                    },
+                    plotLines: [{
+                        value: 0,
+                        width: 2,
+                        color: 'silver'
+                    }]
+                },
+
+                tooltip: {
+                    formatter: function () {
+                        var s = '<b>' + Highcharts.dateFormat('%A, %b %e, %Y', this.x) + '</b>';
+
+                        $.each(this.points, function () {
+                            s += '<br/>' + this.series.name + ':' + this.point.y + ' (Build:' + this.point.build + ')';
+                        });
+                        return s;
+                    },
+                },
+
+                series: seriesOptions
+
+            });
+        };
+    createChart();
+});
+</script>
+
+
+
+
+
+
+<script type="text/javascript">
+$(function () {
+
+    var seriesOptions = [
+                        {
+                             "name": "Tinman",
+                             "data": <%= raw @srtpcall_ssinterface %>
+                         },
+                         {
+                             "name": "VVX101",
+                             "data": <%= raw @srtpcall_vvx101 %>
+                         },
+                         {
+                             "name": "VVX201",
+                             "data": <%= raw @srtpcall_vvx201 %>
+                         },
+                         {
+                             "name": "VVX301",
+                             "data": <%= raw @srtpcall_vvx301 %>
+                         },
+                         {
+                             "name": "VVX310",
+                             "data": <%= raw @srtpcall_vvx310 %>
+                         },
+                         {
+                             "name": "VVX410",
+                             "data": <%= raw @srtpcall_vvx410 %>
+                         },
+                         {
+                             "name": "VVX411",
+                             "data": <%= raw @srtpcall_vvx411 %>
+                         },
+                         {
+                             "name": "VVX500",
+                             "data": <%= raw @srtpcall_vvx500 %>
+                         },
+                         {
+                             "name": "VVX501",
+                             "data": <%= raw @srtpcall_vvx501 %>
+                         },
+                         {
+                             "name": "VVX600",
+                             "data": <%= raw @srtpcall_vvx600 %>
+                         },
+                         {       
+                             "name": "VVX601",
+                             "data": <%= raw @srtpcall_vvx601 %>
+                         },
+                         {
+                             "name": "VVX1500",
+                             "data": <%= raw @srtpcall_vvx1500 %>
+                         },
+                         ],
+
+        // create the chart when all data is loaded
+        createChart = function () {
+
+            $('#container3').highcharts('StockChart', {
+
+                title: {
+                  text: ''
+                },
+
+                subtitle: {
+                    text: 'GroupP (VVX500, VVX600)'
+                },
+
+                chart: {
+                        // Edit chart spacing
+                        spacingBottom: 10,
+                        spacingTop: 10,
+                        spacingLeft: 10,
+                        spacingRight: 10,
+
+                        // Explicitly tell the width and height of a chart
+                        width: null,
+                        height: null,
+                        borderWidth: 0,
+                },
+
+                legend: {
+                    enabled: true,
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'middle',
+                    borderWidth: 0
+                },
+                
+                rangeSelector: {
+                    selected: 4
+                },
+
+                yAxis: {
+                    labels: {
+                        formatter: function () {
+                            return (this.value > 0 ? ' + ' : '') + this.value ;
+                        }
+                    },
+                    plotLines: [{
+                        value: 0,
+                        width: 2,
+                        color: 'silver'
+                    }]
+                },
+
+                tooltip: {
+                    formatter: function () {
+                        var s = '<b>' + Highcharts.dateFormat('%A, %b %e, %Y', this.x) + '</b>';
+
+                        $.each(this.points, function () {
+                            s += '<br/>' + this.series.name + ':' + this.point.y + ' (Build:' + this.point.build + ')';
+                        });
+                        return s;
+                    },
+                },
+
+                series: seriesOptions
+
+            });
+        };
+    createChart();
+});
+</script>
+
+
+
+
+
+
+
+<script type="text/javascript">
+$(function () {
+
+    var seriesOptions = [
+              {
+                  "name": "Tinman",
+                  "data": <%= raw @srtpconf_ssinterface %>
+              },
+              {
+                  "name": "VVX101",
+                  "data": <%= raw @srtpconf_vvx101 %>
+              },
+              {
+                  "name": "VVX201",
+                  "data": <%= raw @srtpconf_vvx201 %>
+              },
+              {
+                  "name": "VVX301",
+                  "data": <%= raw @srtpconf_vvx301 %>
+              },
+              {
+                  "name": "VVX310",
+                  "data": <%= raw @srtpconf_vvx310 %>
+              },
+              {
+                  "name": "VVX410",
+                  "data": <%= raw @srtpconf_vvx410 %>
+              },
+              {
+                  "name": "VVX411",
+                  "data": <%= raw @srtpconf_vvx411 %>
+              },
+              {
+                  "name": "VVX500",
+                  "data": <%= raw @srtpconf_vvx500 %>
+              },
+              {
+                  "name": "VVX501",
+                  "data": <%= raw @srtpconf_vvx501 %>
+              },
+              {
+                  "name": "VVX600",
+                  "data": <%= raw @srtpconf_vvx600 %>
+              },
+              {       
+                  "name": "VVX601",
+                  "data": <%= raw @srtpconf_vvx601 %>
+              },
+              {
+                  "name": "VVX1500",
+                  "data": <%= raw @srtpconf_vvx1500 %>
+              },
+
+                     ],
+
+        // create the chart when all data is loaded
+        createChart = function () {
+
+            $('#container4').highcharts('StockChart', {
+
+                title: {
+                  text: ''
+                },
+
+                subtitle: {
+                    text: 'GroupP (VVX500, VVX600)'
+                },
+
+                chart: {
+                        // Edit chart spacing
+                        spacingBottom: 10,
+                        spacingTop: 10,
+                        spacingLeft: 10,
+                        spacingRight: 10,
+
+                        // Explicitly tell the width and height of a chart
+                        width: null,
+                        height: null,
+                        borderWidth: 0,
+                },
+
+                legend: {
+                    enabled: true,
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'middle',
+                    borderWidth: 0
+                },
+                
+                rangeSelector: {
+                    selected: 4
+                },
+
+                yAxis: {
+                    labels: {
+                        formatter: function () {
+                            return (this.value > 0 ? ' + ' : '') + this.value ;
+                        }
+                    },
+                    plotLines: [{
+                        value: 0,
+                        width: 2,
+                        color: 'silver'
+                    }]
+                },
+
+                tooltip: {
+                    formatter: function () {
+                        var s = '<b>' + Highcharts.dateFormat('%A, %b %e, %Y', this.x) + '</b>';
+
+                        $.each(this.points, function () {
+                            s += '<br/>' + this.series.name + ':' + this.point.y + ' (Build:' + this.point.build + ')';
+                        });
+                        return s;
+                    },
+                },
+
+                series: seriesOptions
+
+            });
+        };
+    createChart();
+});
+</script>
+
+
+
+<script type="text/javascript">
+$(function () {
+
+    var seriesOptions = [
+		      {
+			  "name": "Tinman",
+			  "data": <%= raw @reboottime_ssinterface %>
+		      },
+		      {
+			  "name": "VVX101",
+			  "data": <%= raw @reboottime_vvx101 %>
+		      },
+		      {
+			  "name": "VVX201",
+			  "data": <%= raw @reboottime_vvx201 %>
+		      },
+		      {
+			  "name": "VVX301",
+			  "data": <%= raw @reboottime_vvx301 %>
+		      },
+		      {
+			  "name": "VVX310",
+			  "data": <%= raw @reboottime_vvx310 %>
+		      },
+		      {
+			  "name": "VVX410",
+			  "data": <%= raw @reboottime_vvx410 %>
+		      },
+		      {
+			  "name": "VVX411",
+			  "data": <%= raw @reboottime_vvx411 %>
+		      },
+		      {
+			  "name": "VVX500",
+			  "data": <%= raw @reboottime_vvx500 %>
+		      },
+		      {
+			  "name": "VVX501",
+			  "data": <%= raw @reboottime_vvx501 %>
+		      },
+		      {
+			  "name": "VVX600",
+			  "data": <%= raw @reboottime_vvx600 %>
+		      },
+		      {       
+			  "name": "VVX601",
+			  "data": <%= raw @reboottime_vvx601 %>
+		      },
+		      {
+			  "name": "VVX1500",
+			  "data": <%= raw @reboottime_vvx1500 %>
+		      },         
+                        ],
+
+        // create the chart when all data is loaded
+        createChart = function () {
+
+            $('#container5').highcharts('StockChart', {
+
+                title: {
+                  text: ''
+                },
+
+                subtitle: {
+                    text: 'GroupP (VVX500, VVX600)'
+                },
+
+                chart: {
+                        // Edit chart spacing
+                        spacingBottom: 10,
+                        spacingTop: 10,
+                        spacingLeft: 10,
+                        spacingRight: 10,
+
+                        // Explicitly tell the width and height of a chart
+                        width: null,
+                        height: null,
+                        borderWidth: 0,
+                },
+
+                legend: {
+                    enabled: true,
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'middle',
+                    borderWidth: 0
+                },
+                
+                rangeSelector: {
+                    selected: 4
+                },
+
+                yAxis: {
+                    labels: {
+                        formatter: function () {
+                            return (this.value > 0 ? ' + ' : '') + this.value ;
+                        }
+                    },
+                    plotLines: [{
+                        value: 0,
+                        width: 2,
+                        color: 'silver'
+                    }]
+                },
+
+                tooltip: {
+                    formatter: function () {
+                        var s = '<b>' + Highcharts.dateFormat('%A, %b %e, %Y', this.x) + '</b>';
+
+                        $.each(this.points, function () {
+                            s += '<br/>' + this.series.name + ':' + this.point.y + ' (Build:' + this.point.build + ')';
+                        });
+                        return s;
+                    },
+                },
+
+                series: seriesOptions
+
+            });
+        };
+    createChart();
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<% if false %>
 
 <script type="text/javascript">
 $(function () {
@@ -196,3 +723,5 @@ $(function () {
 
 
 <div id="container9" style="height: 400px"></div>
+<% end %>
+

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  time: 
+  build: MyString
+  platform: MyString
+  reboot: 1
+
+two:
+  time: 
+  build: MyString
+  platform: MyString
+  reboot: 1

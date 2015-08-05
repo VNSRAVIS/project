@@ -1,10 +1,10 @@
-class CreateMemories < ActiveRecord::Migration
+class CreateSrtpconfs < ActiveRecord::Migration
   def change
-    create_table :memories do |t|
+    create_table :srtpconfs do |t|
       t.bigint :time
       t.string :build
       t.string :platform
-      t.bigint :memory
+      t.integer :srtpconf
       t.string :identifier
 
       t.timestamps null: false

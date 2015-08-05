@@ -1,12 +1,11 @@
-class CreateMemories < ActiveRecord::Migration
+class CreateReboottimes < ActiveRecord::Migration
   def change
-    create_table :memories do |t|
+    create_table :reboottimes do |t|
       t.bigint :time
       t.string :build
       t.string :platform
-      t.bigint :memory
+      t.integer :reboot
       t.string :identifier
-
       t.timestamps null: false
     end
   end
